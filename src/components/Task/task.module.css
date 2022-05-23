@@ -1,3 +1,14 @@
 .task {
   /* Sample  */
+  padding: 20px;
 }
+
+p{
+  display: flex;
+  flex-direction: row;
+  /* padding: 10px; */
+}
+span{
+  margin-left: 20px;
+  margin-right: 20px;
+} 
