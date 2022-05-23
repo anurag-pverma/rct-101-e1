@@ -15,9 +15,11 @@ const Counter = ( props) => {
     <div className={styles.counter}>
       <button data-cy="task-counter-increment-button" onClick={()=>setcCount(ccount+1)}>+</button>
       <span data-cy="task-counter-value">{ccount}</span>
-      <button data-cy="task-counter-decrement-button"onClick={()=>setcCount(ccount+1)}>-</button>
+      <button data-cy="task-counter-decrement-button"onClick={()=>setcCount(ccount-1)}>-</button>
     </div>
   );
 };
+
+
 
 export default Counter;
