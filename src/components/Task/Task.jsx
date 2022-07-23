@@ -1,33 +1,45 @@
 import React from "react";
 import styles from "./task.module.css";
-import { mydata } from "../TaskApp";
-import Counter from "../Counter/Counter";
+import { Counter } from "../Counter";
 
+import removeIcon from "../../assets/remove.svg";
 
-const Task = () => {
-  // NOTE: do not delete `data-cy` key value pair
+const Task = ({ task, handleUpdateTask, handleRemoveTask }) => {
+  const toggleTaskStatus = () => {
+    let toggledTask = {
+      ...task,
+      done: !task.done,
+    };
+    handleUpdateTask(toggledTask);
+  };
 
-  console.log(mydata);
+  const updateCount = (newCount) => {
+    if (newCount > 0) {
+      let updatedCountTask = {
+        ...task,
+        count: newCount,
+      };
+      handleUpdateTask(updatedCountTask);
+    }
+  };
+
   return (
     <li data-cy="task" className={styles.task}>
-      <input type="checkbox" data-cy="task-checkbox" />
-      <div data-cy="task-text">
-      {
-        mydata.map((item)=>{
-          return <>
-          
-
-          <p>{item.text} <span><Counter data = {item.count} /></span></p> 
-          {/* <p>{item.count}</p> */}
-          
-          </>
-        })
-
-      }
-
-      </div>
-      {/* Counter here */}
-      <button data-cy="task-remove-button"></button>
+      <input
+        type="checkbox"
+        data-cy="task-checkbox"
+        checked={task.done}
+        onChange={toggleTaskStatus}
+      />
+      <div data-cy="task-text">{task.text}</div>
+      <Counter count={task.count} updateCount={updateCount} />
+      <button
+        data-cy="task-remove-button"
+        onClick={() => handleRemoveTask(task.id)}
+        className={styles.removeButton}
+      >
+        <img src={removeIcon} alt="Remove button text" />
+      </button>
     </li>
   );
 };

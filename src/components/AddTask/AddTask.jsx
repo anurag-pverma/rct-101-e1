@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./addTask.module.css";
-import { useState } from "react";
 
+const AddTask = ({ addTask }) => {
+  const [newTask, setNewTask] = useState("");
 
-const AddTask = () => {
-  // NOTE: do not delete `data-cy` key value pair
-  const [input, setInput] = useState("")
-  const [value, setValue] = useState("")
-  
-const handleClick=()=>{
-  setValue(input)
-  console.log(input)
-}
-
+  const handleClick = () => {
+    addTask(newTask);
+    setNewTask("");
+  };
   return (
     <div className={styles.todoForm}>
-      <input data-cy="add-task-input" type="text"  onChange={(event)=> setInput(event.target.value)}/>
-
-      <button data-cy="add-task-button" onClick={handleClick}>+</button>
-      <h1>{value}</h1>
+      <input
+        data-cy="add-task-input"
+        value={newTask}
+        onChange={({ target }) => setNewTask(target.value)}
+        type="text"
+      />
+      <button data-cy="add-task-button" onClick={handleClick}>
+        +
+      </button>
     </div>
   );
 };

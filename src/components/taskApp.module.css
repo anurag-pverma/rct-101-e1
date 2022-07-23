@@ -1,12 +1,17 @@
-.taskApp {
-  /* Sample */
+.main {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: auto;
-  width: 400px;
-  background-color: chartreuse;
-  
+  justify-content: center;
+  padding: 1.5rem;
+}
 
+.taskApp {
+  border: 1px solid red;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 0.5rem;
 }
